@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 
 import '../pages/Home.dart';
+import '../pages/text/Text.dart';
+import '../pages/container/Container.dart';
 
 final routes = {
-  '/': (context) => Home()
+  '/': (context) => Home(),
+  '/text': (context) => TextDemo(),
+  '/container': (context) => ContainerDemo()
 };
 
 //固定写法

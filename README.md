@@ -1,6 +1,6 @@
 # flutter_widget_demo
 
-A new Flutter project.
+提供一个flutter的widget的demo集合，用于学习flutter widget和文档
 
 ## Getting Started
 
@@ -14,3 +14,5 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter, view our 
 [online documentation](https://flutter.dev/docs), which offers tutorials, 
 samples, guidance on mobile development, and a full API reference.
+
+
