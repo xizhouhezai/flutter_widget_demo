@@ -21,6 +21,10 @@ var onGenerateRoute = (RouteSettings settings) {
   final String name = settings.name;
   final Function pageContentBuilder = routes[name];
   if (pageContentBuilder != null) {
+    print('----------------------------');
+    print(name);
+    print('----------------------------');
+    
     if (settings.arguments != null) {
       final Route route = CupertinoPageRoute(
         builder: (context) =>
@@ -28,7 +32,13 @@ var onGenerateRoute = (RouteSettings settings) {
       );
       return route;
     } else {
-      final Route route = CupertinoPageRoute(builder: (context) => pageContentBuilder(context));
+      Route route;
+      if (name == '/') {
+        route = MaterialPageRoute(builder: (context) => pageContentBuilder(context));
+      } else {
+        route = CupertinoPageRoute(builder: (context) => pageContentBuilder(context));
+      }
+       
       return route;
     }
   }
