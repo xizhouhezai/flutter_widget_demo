@@ -19,22 +19,38 @@ class HomeTab extends StatefulWidget {
 }
 
 class _HomeTabState extends State<HomeTab> {
-  List _pageList = [
-    HomeIndex(),
-    User()
-  ];
-  int _selectedIndex = 0;
+  List _pageList;
+  int _selectedIndex;
+  PageController _controller;
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _selectedIndex = 0;
+    _controller = PageController(initialPage: 0);
+    _pageList = List() ..add(HomeIndex()) ..add(User());
+
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+
+    _controller.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: this._pageList[this._selectedIndex],
+      body: PageView.builder(
+        // physics: NeverScrollableScrollPhysics(),//viewPage禁止左右滑动
+        onPageChanged: _pageChange,
+        controller: _controller,
+        itemCount: _pageList.length,
+        itemBuilder: (context, index) => _pageList[index],
+      ),
       bottomNavigationBar: BottomNavigationBar( // 底部导航
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('Home')),
@@ -45,6 +61,20 @@ class _HomeTabState extends State<HomeTab> {
         onTap: _onItemTapped,
       ),
     );
+  }
+
+  void _pageChange(int index) {
+    print(index);
+    if (index != _selectedIndex) {
+      setState(() {
+        _selectedIndex = index;
+      });
+    }
+  }
+
+  void _onItemTapped(int index) {
+    print(_controller);
+    _controller.jumpToPage(index);
   }
 }
 

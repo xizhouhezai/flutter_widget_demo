@@ -23,28 +23,11 @@ var list = [
     'routeArgs': '大家好'
   },
 ];
-// List<Widget> getList(context) {
-//   var tempList = list.map((value){
-//     return ListTile(
-//       title: Text(value['title']),
-//       onTap: () {
-//         //路由跳转
-//         Navigator.pushNamed(context, value['route']);
-//       },
-//     );
-//   });
-//   return tempList.toList();
-// }
+
 List<Widget> getList(context) {
   var tempList = list.map((value){
-    print('routeArgs--------------------------');
-    print(value['routeArgs']);
-    print('routeArgs--------------------------');
     return GestureDetector(
       onTap: () {
-        // print('routeArgs--------------------------');
-        // print(value['routeArgs']);
-        // print('routeArgs--------------------------');
         if (value['routeArgs'] == null) {
           Navigator.pushNamed(context, value['route']);
         } else {
@@ -61,11 +44,6 @@ List<Widget> getList(context) {
               backgroundColor: Color(0xFFCCCCCC),
               backgroundImage: NetworkImage('https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1699287406,228622974&fm=26&gp=0.jpg'),
             ),
-            // Image.network(
-            //   'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1699287406,228622974&fm=26&gp=0.jpg',
-            //   height: 40,
-            //   // fit: BoxFit.fitWidth,
-            // ),
             Padding(
               padding: EdgeInsets.only(left: 15.0)
             ),
@@ -132,6 +110,7 @@ List<Widget> getList(context) {
     //   },
     // );
   });
+
   return tempList.toList();
 }
 

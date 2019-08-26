@@ -34,7 +34,18 @@ var onGenerateRoute = (RouteSettings settings) {
     } else {
       Route route;
       if (name == '/') {
-        route = MaterialPageRoute(builder: (context) => pageContentBuilder(context));
+        // route = MaterialPageRoute(builder: (context) => pageContentBuilder(context), fullscreenDialog: true);
+        route = PageRouteBuilder(
+          transitionDuration: Duration(milliseconds: 500), //动画时间为500毫秒
+          pageBuilder: (BuildContext context, Animation animation,
+            Animation secondaryAnimation) {
+            return new FadeTransition(
+              //使用渐隐渐入过渡,
+              opacity: animation,
+              child: pageContentBuilder(context), //路由B
+            );
+          },
+        );
       } else {
         route = CupertinoPageRoute(builder: (context) => pageContentBuilder(context));
       }

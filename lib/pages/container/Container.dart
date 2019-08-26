@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 
+import '../../http/http.dart';
+
 class ContainerDemo extends StatelessWidget {
   const ContainerDemo({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    _getUser();
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Container Widget'),
@@ -44,4 +48,13 @@ class ContainerDemo extends StatelessWidget {
       )
     );
   }
+}
+
+_getUser() async {
+  
+  print('user----------------------------');
+  var i = await LocalStorage().get('user');
+
+  print(i['token']);
+  print('user----------------------------');
 }

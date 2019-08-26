@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../http/http.dart';
+
 var funcList = [
   {
     'title': '常用信息',
@@ -82,8 +84,8 @@ class User extends StatelessWidget {
 
   Widget headerBar() {
     return Container(
-      height: 30.0,
-      // padding: EdgeInsets.only(top: 30.0),
+      height: 60.0,
+      padding: EdgeInsets.only(top: 30.0),
       // margin: EdgeInsets.only(bottom: 100.0),
       color: Color(0xFF1BC6A4),
       alignment: Alignment.center,
@@ -92,6 +94,7 @@ class User extends StatelessWidget {
   }
 
   Widget userInfo() {
+
     return Stack(
       fit: StackFit.passthrough,
       overflow: Overflow.visible,
@@ -263,17 +266,24 @@ class User extends StatelessWidget {
       //   ),
       //   backgroundColor: Color(0xFF1BC6A4),
       // ),
-      body: Container(
-        color: Color(0xFFEDEFF4),
+      body: MediaQuery.removePadding(
+        removeTop: true,
+        context: context,
         child: ListView(
+          shrinkWrap: true,
           // crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             this.headerBar(),
             this.userInfo(),
+            this.listAuto(),
             this.listAuto()
           ],
         ),
       )
+      // Container(
+      //   color: Color(0xFFEDEFF4),
+      //   child: 
+      // )
     );
   }
 }
