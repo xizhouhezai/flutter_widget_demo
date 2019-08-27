@@ -22,6 +22,8 @@ class _AnimationDemoState extends State<AnimationDemo> {
   @override
   void initState() { 
     super.initState();
+
+    setUser();
     
     _incrementCounter();
   }
@@ -81,6 +83,6 @@ class _AnimationDemoState extends State<AnimationDemo> {
 //   }
 // }
 
-// _incrementCounter() async {
-//   await LocalStorage().set('user', {'token': 'jdkjflajidjfkdjaljfieojajdf', 'name': 'Tom'});
-// }
+setUser() async {
+  await LocalStorage().set('user', {'token': 'jdkjflajidjfkdjaljfieojajdf', 'name': 'Tom'});
+}

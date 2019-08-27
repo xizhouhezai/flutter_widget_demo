@@ -16,7 +16,7 @@ final routes = {
 };
 
 //固定写法
-var onGenerateRoute = (RouteSettings settings) {
+Route routeHandler({@required RouteSettings settings, Map args}) {
   // 统一处理
   final String name = settings.name;
   final Function pageContentBuilder = routes[name];
@@ -33,24 +33,27 @@ var onGenerateRoute = (RouteSettings settings) {
       return route;
     } else {
       Route route;
-      if (name == '/') {
-        // route = MaterialPageRoute(builder: (context) => pageContentBuilder(context), fullscreenDialog: true);
-        route = PageRouteBuilder(
-          transitionDuration: Duration(milliseconds: 500), //动画时间为500毫秒
-          pageBuilder: (BuildContext context, Animation animation,
-            Animation secondaryAnimation) {
-            return new FadeTransition(
-              //使用渐隐渐入过渡,
-              opacity: animation,
-              child: pageContentBuilder(context), //路由B
-            );
-          },
-        );
-      } else {
-        route = CupertinoPageRoute(builder: (context) => pageContentBuilder(context));
+
+      // 处理单独的路由转场动画
+      switch (name) {
+        case '/':
+          route = PageRouteBuilder(
+            transitionDuration: Duration(milliseconds: 500), //动画时间为500毫秒
+            pageBuilder: (BuildContext context, Animation animation,
+              Animation secondaryAnimation) {
+              return new FadeTransition(
+                //使用渐隐渐入过渡,
+                opacity: animation,
+                child: pageContentBuilder(context), //路由B
+              );
+            },
+          );
+          break;
+        default:
+          route = CupertinoPageRoute(builder: (context) => pageContentBuilder(context));
       }
        
       return route;
     }
   }
-};
+}
