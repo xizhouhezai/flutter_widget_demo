@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+// import 'package:provide/provide.dart';
+import 'package:toast/toast.dart';
 
+// import 'package:flutter_widget_demo/models/counter.dart';
 import '../../http/http.dart';
+import 'package:flutter_widget_demo/components/LoginFormCode.dart';
+import 'package:flutter_widget_demo/components/LoginFormField.dart';
 
 class AnimationDemo extends StatefulWidget {
   final Map arguments;
   AnimationDemo({Key key, this.arguments}) : super(key: key);
 
   _AnimationDemoState createState(){
-    print(arguments);
-    print('1111111111111111');
     return _AnimationDemoState(arguments: arguments);
   }
 }
@@ -17,11 +20,20 @@ class _AnimationDemoState extends State<AnimationDemo> {
   final Map arguments;
   Map _user;
 
+  final _codeController = TextEditingController();
+  /// 发送验证码按钮是否可用。
+  bool _codeAvailable = false;
+
+  /// 验证码文本字段是否符合格式。
+  bool _codeActivation = false;
+
   _AnimationDemoState({this.arguments});
 
   @override
   void initState() { 
     super.initState();
+
+    LocalStorage().remove('user');
 
     setUser();
     
@@ -49,9 +61,54 @@ class _AnimationDemoState extends State<AnimationDemo> {
         child: Column(
           children: <Widget>[
             Text(arguments['str']),
-            Text(_user['name'])
+            Text(_user == null ? '' : _user['name']),
+            Stack(
+              children: <Widget>[
+                LoginFormField(
+                  hintText: '请输入验证码',
+                  textEditingController: _codeController,
+                  maxLength: 6,
+                  minLength: 6,
+                  legitimateCallback: () {
+                    setState(() {
+                      _codeActivation = true;
+                    });
+                  },
+                  illegalCallback: () {
+                    setState(() {
+                      _codeActivation = false;
+                    });
+                  },
+                ),
+                // 对齐（`Align`）组件，用于将其子项与其自身对齐，并根据子级的大小自行调整大小。
+                Align(
+                  heightFactor: 1.7,
+                  alignment: Alignment.centerRight,
+                  child: LoginFormCode(
+                    countdown: 60,
+                    available: !_codeAvailable,
+                    onTapCallback: () {
+                      // print('_codeController------------------------------------------');
+                      // print(_codeController.text);
+                      // print('_codeController------------------------------------------');
+                    },
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {
+          // Provide.value<Counter>(context).increment();
+          // await LocalStorage().remove('user');
+          print('_codeController------------------------------------------');
+          print(_codeController.text);
+          print('_codeController------------------------------------------');
+          Toast.show("Toast plugin app", context, duration: Toast.LENGTH_LONG, gravity:  Toast.CENTER);
+        },
+        child: Icon(Icons.add),
       ),
     );
   }

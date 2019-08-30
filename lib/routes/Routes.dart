@@ -1,29 +1,44 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
+import 'package:flutter_widget_demo/common/global.dart';
+
 import '../pages/Home.dart';
 import '../pages/text/Text.dart';
 import '../pages/container/Container.dart';
 import '../pages/flex/Flex.dart';
 import '../pages/animation/Animation.dart';
+import 'package:flutter_widget_demo/pages/user/Login.dart';
 
 final routes = {
   '/': (context) => Home(),
   '/text': (context) => TextDemo(),
   '/container': (context) => ContainerDemo(),
   '/flex': (context) => FlexDemo(),
-  '/animation': (context, {arguments}) => AnimationDemo(arguments: arguments)
+  '/animation': (context, {arguments}) => AnimationDemo(arguments: arguments),
+  '/login': (context) => Login(),
 };
 
 //固定写法
-Route routeHandler({@required RouteSettings settings, Map args}) {
+Route routeHandler({@required RouteSettings settings}) {
   // 统一处理
   final String name = settings.name;
-  final Function pageContentBuilder = routes[name];
+
+  var user = Global.user;
+
+  print('----------------------------');
+  print(user);
+  print('----------------------------');
+
+  Function pageContentBuilder;
+
+  if (user == null && name != '/login') {
+    pageContentBuilder = routes['/login'];
+  } else {
+    pageContentBuilder = routes[name];
+  }
+  
   if (pageContentBuilder != null) {
-    print('----------------------------');
-    print(name);
-    print('----------------------------');
     
     if (settings.arguments != null) {
       final Route route = CupertinoPageRoute(

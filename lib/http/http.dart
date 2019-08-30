@@ -9,6 +9,10 @@ class LocalStorage {
 
     var result = prefs.get(name);
 
+    if (result == null) {
+      return null;
+    }
+
     result = json.decode(result);
 
     return result;
@@ -20,5 +24,11 @@ class LocalStorage {
     var temp = json.encode(value);
 
     await prefs.setString(name, temp);
+  }
+
+  remove(String name) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    await prefs.remove(name);
   }
 }

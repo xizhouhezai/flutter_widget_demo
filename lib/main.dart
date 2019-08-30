@@ -1,8 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:provide/provide.dart';
 
+import 'package:flutter_widget_demo/common/global.dart';
 import 'routes/Routes.dart';
+import 'package:flutter_widget_demo/models/counter.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  var counter = Counter();
+
+  var providers = Providers();
+
+  providers
+    ..provide(Provider<Counter>.value(counter));
+
+  Global.init().then((e) => runApp(ProviderNode(child: MyApp(), providers: providers)));
+}
 
 
 
@@ -16,7 +28,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.lightBlue,
       ),
       initialRoute: '/',
-      onGenerateRoute: (RouteSettings settings) {
+      onGenerateRoute: (RouteSettings settings) {        
         return routeHandler(settings: settings);
       },
     );
