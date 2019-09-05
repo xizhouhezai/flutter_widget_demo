@@ -29,7 +29,7 @@ class _HomeTabState extends State<HomeTab> {
     super.initState();
     _selectedIndex = 0;
     _controller = PageController(initialPage: 0);
-    _pageList = List() ..add(HomeIndex()) ..add(User());
+    _pageList = List() ..add(HomeIndex()) ..add(null) ..add(User());
 
   }
 
@@ -45,26 +45,52 @@ class _HomeTabState extends State<HomeTab> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageView.builder(
-        // physics: NeverScrollableScrollPhysics(),//viewPage禁止左右滑动
+        physics: NeverScrollableScrollPhysics(),//viewPage禁止左右滑动
         onPageChanged: _pageChange,
         controller: _controller,
         itemCount: _pageList.length,
         itemBuilder: (context, index) => _pageList[index],
       ),
-      bottomNavigationBar: BottomNavigationBar( // 底部导航
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('Home')),
-          BottomNavigationBarItem(icon: Icon(Icons.people), title: Text('用户'))
-        ],
-        currentIndex: _selectedIndex,
-        fixedColor: Colors.blue,
-        onTap: _onItemTapped,
+      floatingActionButton: FloatingActionButton(
+        onPressed: null,
+        child: Icon(Icons.add),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomAppBar(
+        shape: CircularNotchedRectangle(),
+        child: BottomNavigationBar(
+          currentIndex: _selectedIndex,
+          fixedColor: Colors.blue,
+          onTap: _onItemTapped,
+          items: <BottomNavigationBarItem>[
+            BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('Home')),
+            BottomNavigationBarItem(icon: Icon(Icons.filter_none, color: Color.fromRGBO(255, 255, 255, 0)), title: Text('Controller')),
+            BottomNavigationBarItem(icon: Icon(Icons.people), title: Text('用户'))
+          ],
+        ),
+      ),
+      // bottomNavigationBar: BottomNavigationBar( // 底部导航
+      //   items: <BottomNavigationBarItem>[
+      //     BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('Home')),
+      //     BottomNavigationBarItem(icon: Icon(Icons.people), title: Text('用户'))
+      //   ],
+      //   currentIndex: _selectedIndex,
+      //   fixedColor: Colors.blue,
+      //   onTap: _onItemTapped,
+      // ),
     );
   }
 
   void _pageChange(int index) {
+    print('index------------------------------');
     print(index);
+    print('index------------------------------');
+    if (index == 1) {
+      return;
+    }
+    print('index1------------------------------');
+    print(index);
+    print('index1------------------------------');
     if (index != _selectedIndex) {
       setState(() {
         _selectedIndex = index;
@@ -73,6 +99,9 @@ class _HomeTabState extends State<HomeTab> {
   }
 
   void _onItemTapped(int index) {
+    if (index == 1) {
+      return;
+    }
     print(_controller);
     _controller.jumpToPage(index);
   }

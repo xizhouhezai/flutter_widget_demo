@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 // import 'package:provide/provide.dart';
 import 'package:toast/toast.dart';
+import 'package:flutter_swiper/flutter_swiper.dart';
 
 // import 'package:flutter_widget_demo/models/counter.dart';
 import '../../http/http.dart';
 import 'package:flutter_widget_demo/components/LoginFormCode.dart';
 import 'package:flutter_widget_demo/components/LoginFormField.dart';
+
+import 'package:flutter_widget_demo/components/DropDown.dart';
 
 class AnimationDemo extends StatefulWidget {
   final Map arguments;
@@ -29,11 +32,13 @@ class _AnimationDemoState extends State<AnimationDemo> {
 
   _AnimationDemoState({this.arguments});
 
+  final _optionController = TextEditingController();
+
   @override
   void initState() { 
     super.initState();
 
-    LocalStorage().remove('user');
+    // LocalStorage().remove('user'); 
 
     setUser();
     
@@ -94,8 +99,16 @@ class _AnimationDemoState extends State<AnimationDemo> {
                     },
                   ),
                 ),
+
               ],
             ),
+
+            DropDown(
+              options: [],
+              optionController: _optionController,
+            ),
+
+            Text('dkfjdksjal'),
           ],
         ),
       ),
@@ -103,9 +116,9 @@ class _AnimationDemoState extends State<AnimationDemo> {
         onPressed: () async {
           // Provide.value<Counter>(context).increment();
           // await LocalStorage().remove('user');
-          print('_codeController------------------------------------------');
-          print(_codeController.text);
-          print('_codeController------------------------------------------');
+          print('_optionController------------------------------------------');
+          print(_optionController.text);
+          print('_optionController------------------------------------------');
           Toast.show("Toast plugin app", context, duration: Toast.LENGTH_LONG, gravity:  Toast.CENTER);
         },
         child: Icon(Icons.add),

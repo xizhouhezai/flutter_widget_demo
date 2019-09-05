@@ -90,7 +90,7 @@ class _LoginFormFieldState extends State<LoginFormField> {
           color: const Color(0xFFcccccc),
         ),
         Container(
-          height: 2.0,
+          height: 0.5,
           color: inputColor,
         ),
       ],

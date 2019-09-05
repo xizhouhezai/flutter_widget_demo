@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_widget_demo/common/service_locator.dart';
+import 'package:flutter_widget_demo/common/global_navigator.dart';
+
 var list = [
   {
     'title': 'Text Widget',
@@ -29,7 +32,9 @@ List<Widget> getList(context) {
     return GestureDetector(
       onTap: () {
         if (value['routeArgs'] == null) {
-          Navigator.pushNamed(context, value['route']);
+          // Navigator.pushNamed(context, value['route']);
+          // CustomNavigatorObserver.getInstance().navigator.pushNamed("/login");
+          getIt<NavigateService>().pushNamed(value['route']);
         } else {
           Navigator.of(context).pushNamed(value['route'], arguments: {'str': value['routeArgs']});
         }
