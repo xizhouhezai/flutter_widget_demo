@@ -25,6 +25,41 @@ var list = [
     'subTitle': '简单的动画展示',
     'routeArgs': '大家好'
   },
+  {
+    'title': '列表',
+    'route': '/list',
+    'subTitle': '跳到指定的item',
+  },
+  {
+    'title': '选择图片',
+    'route': '/imagePicker',
+    'subTitle': '从图库选择图片',
+  },
+  {
+    'title': 'MarkDown',
+    'route': '/markdown',
+    'subTitle': 'MarkDown',
+  },
+  {
+    'title': '录音',
+    'route': '/audio',
+    'subTitle': '录音',
+  },
+  {
+    'title': '动画组件',
+    'route': '/animator',
+    'subTitle': '动画组件',
+  },
+  {
+    'title': '自定义动画组件',
+    'route': '/animatorset',
+    'subTitle': '自定义动画组件',
+  },
+  {
+    'title': 'GlobalKey',
+    'route': '/switchOut',
+    'subTitle': 'GlobalKey的使用',
+  },
 ];
 
 List<Widget> getList(context) {
