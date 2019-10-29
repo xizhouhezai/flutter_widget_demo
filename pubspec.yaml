@@ -44,6 +44,7 @@ dependencies:
   flutter_animation_set: ^0.0.3
   # image_editor: ^0.1.1
   # kropper: ^0.0.2
+  waveprogressbar_flutter: ^0.1.2
 
 dev_dependencies:
   flutter_test:

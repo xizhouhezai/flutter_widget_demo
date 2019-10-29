@@ -60,6 +60,16 @@ var list = [
     'route': '/switchOut',
     'subTitle': 'GlobalKey的使用',
   },
+  {
+    'title': '贝塞尔曲线',
+    'route': '/bezier',
+    'subTitle': '贝塞尔曲线',
+  },
+  {
+    'title': '动画',
+    'route': '/customAnimation',
+    'subTitle': '自动以动画',
+  },
 ];
 
 List<Widget> getList(context) {

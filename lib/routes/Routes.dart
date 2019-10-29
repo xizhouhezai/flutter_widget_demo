@@ -17,6 +17,8 @@ import 'package:flutter_widget_demo/pages/container/Audio.dart';
 import 'package:flutter_widget_demo/pages/animation/Animator.dart';
 import 'package:flutter_widget_demo/pages/animation/Animatorset.dart';
 import 'package:flutter_widget_demo/pages/container/SwitchOut.dart';
+import 'package:flutter_widget_demo/pages/animation/Bezier.dart';
+import 'package:flutter_widget_demo/pages/animation/CustomAnimation.dart';
 
 final routes = {
   '/': (context) => Home(),
@@ -33,6 +35,8 @@ final routes = {
   '/animator': (context) => Animator(),
   '/animatorset': (context) => Animatorset(),
   '/switchOut': (context) => SwitchOut(),
+  '/bezier': (context) => Bezier(),
+  '/customAnimation': (context) => CustomAnimation(),
 };
 
 //固定写法
