@@ -14,6 +14,9 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <!-- 这个权限用于访问GPS定位 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <!-- <uses-sdk android:minSdkVersion="INSERT_YOUR_DESIRED_minSdkVersion_HERE" tools:overrideLibrary="com.vitanov.multiimagepicker"/> -->
     <application

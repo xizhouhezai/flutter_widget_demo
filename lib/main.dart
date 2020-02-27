@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provide/provide.dart';
+import 'package:bot_toast/bot_toast.dart';
 
 import 'package:flutter_widget_demo/common/global.dart';
 import 'routes/Routes.dart';
@@ -26,16 +27,19 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      navigatorKey: getIt<NavigateService>().key,
-      title: 'Flutter Demo',
-      theme: new ThemeData(
-        primarySwatch: Colors.lightBlue,
-      ),
-      initialRoute: '/',
-      onGenerateRoute: (RouteSettings settings) {        
-        return routeHandler(settings: settings);
-      },
+    return BotToastInit(
+      child: MaterialApp(
+        navigatorKey: getIt<NavigateService>().key,
+        navigatorObservers: [BotToastNavigatorObserver()],
+        title: 'Flutter Demo',
+        theme: new ThemeData(
+          primarySwatch: Colors.lightBlue,
+        ),
+        initialRoute: '/',
+        onGenerateRoute: (RouteSettings settings) {        
+          return routeHandler(settings: settings);
+        },
+      )
     );
   }
 }

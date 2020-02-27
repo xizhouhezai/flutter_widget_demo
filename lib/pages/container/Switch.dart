@@ -20,11 +20,11 @@ class SwitchGlobalState extends State<SwitchGlobal> {
     return Scaffold(
       body: Center(
         child: Switch.adaptive(
-            value: isActive,
-            onChanged: (bool currentStatus) {
-              isActive = currentStatus;
-              setState(() {});
-            }),
+          value: isActive,
+          onChanged: (bool currentStatus) {
+            isActive = currentStatus;
+            setState(() {});
+          }),
       ),
     );
   }

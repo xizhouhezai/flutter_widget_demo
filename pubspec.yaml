@@ -45,6 +45,10 @@ dependencies:
   # image_editor: ^0.1.1
   # kropper: ^0.0.2
   waveprogressbar_flutter: ^0.1.2
+  flutter_staggered_animations: ^0.1.2
+  permission_handler: ^3.3.0
+  bot_toast: ^2.1.0
+  hidden_drawer_menu: ^1.1.2
 
 dev_dependencies:
   flutter_test:

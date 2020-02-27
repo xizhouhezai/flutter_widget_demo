@@ -19,6 +19,10 @@ import 'package:flutter_widget_demo/pages/animation/Animatorset.dart';
 import 'package:flutter_widget_demo/pages/container/SwitchOut.dart';
 import 'package:flutter_widget_demo/pages/animation/Bezier.dart';
 import 'package:flutter_widget_demo/pages/animation/CustomAnimation.dart';
+import 'package:flutter_widget_demo/pages/animation/ListAnimation.dart';
+import 'package:flutter_widget_demo/pages/animation/gridListAnimation.dart';
+import 'package:flutter_widget_demo/pages/container/GlobalToast.dart';
+import 'package:flutter_widget_demo/pages/scroller/CustomScrollView.dart';
 
 final routes = {
   '/': (context) => Home(),
@@ -37,6 +41,10 @@ final routes = {
   '/switchOut': (context) => SwitchOut(),
   '/bezier': (context) => Bezier(),
   '/customAnimation': (context) => CustomAnimation(),
+  '/listAnimation': (context) => ListAnimation(),
+  '/gridListAnimation': (context) => GridListAnimation(),
+  '/globalToast': (context) => GlobalToast(),
+  '/customScrollView': (context) => CustomScrollerView(),
 };
 
 //固定写法
